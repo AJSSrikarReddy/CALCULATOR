@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Interest Calculator</title>
+    </head>
+    <body>
+        <h1>Simple Interest Calculator</h1>
+
+
+        <label for="principal">Principal Amount: </label>
+        <input type="range"  min="0" max="100000"  id="principal" oninput="updateSliderValue('principal','principalValue'); calculateInterest()">
+        <span id="principalValue"></span>
+        
+        <br>
+
+        <label for="interest">Rate of Interest: </label>
+        <input  type="range" min="0" max="25" id="interest" oninput="updateSliderValue('interest','interestValue'); calculateInterest()">
+        <span id="interestValue"></span>
+
+        <br>
+
+        <label for="time">Time(in years): </label>
+        <input  type="range" min="0" max="20" id="time" oninput="updateSliderValue('time','timeValue'); calculateInterest()">
+        <span id="timeValue"></span>
+
+        <br><br>
+
+        <div id="result"></div>
+
+        <script>
+            function updateSliderValue(sliderId,valueId){
+                var slider=document.getElementById(sliderId);
+                var value= document.getElementById(valueId);
+                value.textContent=slider.value;
+
+            }
+
+            function calculateInterest(){
+
+                var principal=parseFloat(document.getElementById('principal').value);
+                var interest= parseFloat(document.getElementById('interest').value);
+                var time=parseFloat(document.getElementById('time').value);
+
+                var si=principal*interest*time/100;
+    
+
+                document.getElementById('result').innerHTML="Simple Interest : " + si.toFixed(2);
+            }
+        </script>
+
+    </body>
+</html>
